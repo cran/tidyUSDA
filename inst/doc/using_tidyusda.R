@@ -27,7 +27,7 @@ ops.with.sales <- tidyUSDA::getQuickstat(
   group=NULL,
   commodity=NULL,
   category=NULL,
-  domain=NULL,
+  domain='TOTAL',
   county=NULL,
   key = key,
   program = 'CENSUS',
@@ -52,6 +52,5 @@ mydata$ALAND <- as.numeric(mydata$ALAND)
 mydata$modified_value <- mydata$Value / mydata$ALAND
 
 ## ------------------------------------------------------------------------
-# tidyUSDA::plotUSDA(df = mydata, target_col = 'modified_value')
 tidyUSDA::plotUSDA(df = mydata, fill_by = 'modified_value')
 

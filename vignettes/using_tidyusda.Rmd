@@ -75,7 +75,7 @@ ops.with.sales <- tidyUSDA::getQuickstat(
   group=NULL,
   commodity=NULL,
   category=NULL,
-  domain=NULL,
+  domain='TOTAL',
   county=NULL,
   key = key,
   program = 'CENSUS',
@@ -98,6 +98,8 @@ tidyUSDA::plotUSDA(df = ops.with.sales)
 
 ```
 
+*Note: it is a known issue that the RStudio graphics device on Mac Os X can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the [tmap](https://github.com/mtennekes/tmap) package or [leaflet](https://rstudio.github.io/leaflet/).*
+
 OK wow so it looks like all the farms in the country are in California. But wait a second, California is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way. First let's clean up the dataframe so it's easier to work with.
 
 ```{r}
@@ -115,7 +117,6 @@ mydata$modified_value <- mydata$Value / mydata$ALAND
 This gives us a bunch of really small numbers that don't make sense, but for our purposes of mapping, they'll do.
 
 ```{r}
-# tidyUSDA::plotUSDA(df = mydata, target_col = 'modified_value')
 tidyUSDA::plotUSDA(df = mydata, fill_by = 'modified_value')
 ```
 
