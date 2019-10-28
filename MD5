@@ -1,7 +1,7 @@
-1041e4b9a45b6df343d7612aa03760a4 *DESCRIPTION
+770a83857b06bd38a506e6374913412e *DESCRIPTION
 8e22e5b7394ba9c138112bb854f98c56 *LICENSE
 8a981485dd82c5be06fb07eafbc144cf *NAMESPACE
-033fce301b4537251bacbc9df9bd1e12 *NEWS.md
+f49da9a57be24f1c64e25bafeb2772fa *NEWS.md
 8e656675db38d7ce69c73ec672ff031f *R/data-allcategory.R
 89b05519bc254e512f44000be0aa4310 *R/data-allcommodity.R
 61cb17fad9f6ca1fe4e232c95b1ad414 *R/data-allcounty.R
@@ -12,11 +12,11 @@ a5f4956a88e6c479049935b298e2c315 *R/data-alldomain.R
 bf9130b7558c442185fa932d1ea6a81b *R/data-allprogram.R
 2dc217e9de0e3c52df8f9ad74be2224e *R/data-allsector.R
 b819cadb99c76cee9805440cf6852071 *R/data-allstate.R
-01e37ac3fb173632589026e49484dd78 *R/getQuickstat.R
-e91d17ad45ed9424349f3befdd247693 *R/plotting.R
+458aab33edb6013265285fa95fbd739a *R/getQuickstat.R
+ade9954f9eb9825cfe55f7da3a3b1e4e *R/plotting.R
 8286ab4a3d3bd4e052465145dc863ed0 *R/tidyUSDA.R
 5cf4fb54d12d1ea2ce61c3f25908e0ed *R/util.R
-cd93ae82f785836bd3077ca6f91333ba *README.md
+636de3c044ce2a4dbff36d9de4f7a4d0 *README.md
 ea4038bdd9378d12bd83b226a77a87c2 *build/vignette.rds
 63c286998e47dac272fda8b6beddf6b2 *data/allCategory.rda
 70cc4121d2402db660eab0f6b28262ea *data/allCommodity.rda
@@ -28,6 +28,7 @@ e38e0c9e62cf40c1b1c9a217d3483b4e *data/allGroup.rda
 6563a548ff3fed98a6310293df1167cc *data/allProgram.rda
 0f9dcebcc1b0ec440120bae36619c9c0 *data/allSector.rda
 296dbf3f16b353da8527a350a8320e8d *data/allState.rda
+7dca4c3035d4932d23e7718f8aa51ae9 *inst/WORDLIST
 935b8e1ae54cc3490dc0e6fe91e66f09 *inst/doc/using_tidyusda.R
 dc6c5fa27b23ef70d3df7389649fd1c5 *inst/doc/using_tidyusda.Rmd
 433167862a68d3d9032ae6326827150e *inst/doc/using_tidyusda.html
