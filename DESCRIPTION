@@ -2,7 +2,7 @@ Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
         Analysis and Visualization
-Version: 0.2.2
+Version: 0.2.3
 Authors@R: 
     c(person(given = "Brad",
              family = "Lindblad",
@@ -25,7 +25,7 @@ URL: https://bradlindblad.github.io/tidyUSDA,
         https://github.com/bradlindblad/tidyUSDA
 Depends: R (>= 3.6)
 Imports: curl, dplyr, fuzzyjoin, ggplot2, jsonlite, keyring, magrittr,
-        nlme, rgdal, sf, stringi, tigris, usethis
+        nlme, rgdal, sf, stringi, tigris, usethis, crayon
 Suggests: knitr, rgeos, rmarkdown, testthat (>= 2.1.0), covr, spelling
 VignetteBuilder: knitr
 Encoding: UTF-8
@@ -33,10 +33,10 @@ LazyData: true
 RoxygenNote: 6.1.1
 Language: en-US
 NeedsCompilation: no
-Packaged: 2019-10-28 02:45:00 UTC; xps
+Packaged: 2019-11-02 03:15:32 UTC; xps
 Author: Brad Lindblad [aut, cre],
   Michael Thomas [ctb],
   Alex Mindeman [ctb]
 Maintainer: Brad Lindblad <bradley.lindblad@gmail.com>
 Repository: CRAN
-Date/Publication: 2019-10-28 05:40:03 UTC
+Date/Publication: 2019-11-02 10:50:02 UTC
