@@ -1,7 +1,7 @@
-0a7e66fcf30371332fdb07373b83f4f4 *DESCRIPTION
+232adaae8d15696984c9372041e093f6 *DESCRIPTION
 8e22e5b7394ba9c138112bb854f98c56 *LICENSE
 8a981485dd82c5be06fb07eafbc144cf *NAMESPACE
-544b34ea6e9e9abfde35d35449fc4525 *NEWS.md
+9fdaacff141b27bd63254c015f2904cc *NEWS.md
 8e656675db38d7ce69c73ec672ff031f *R/data-allcategory.R
 89b05519bc254e512f44000be0aa4310 *R/data-allcommodity.R
 61cb17fad9f6ca1fe4e232c95b1ad414 *R/data-allcounty.R
@@ -13,11 +13,11 @@ bf9130b7558c442185fa932d1ea6a81b *R/data-allprogram.R
 2dc217e9de0e3c52df8f9ad74be2224e *R/data-allsector.R
 b819cadb99c76cee9805440cf6852071 *R/data-allstate.R
 f521ff21ffb5ccfca9db4fe4d80ab0b5 *R/getQuickstat.R
-f1404fd28786d079e31d4b0217e7f787 *R/plotting.R
+5aa89deb47d4d02e97da5bed72b2d2e7 *R/plotting.R
 8286ab4a3d3bd4e052465145dc863ed0 *R/tidyUSDA.R
 5cf4fb54d12d1ea2ce61c3f25908e0ed *R/util.R
-636de3c044ce2a4dbff36d9de4f7a4d0 *README.md
-ea4038bdd9378d12bd83b226a77a87c2 *build/vignette.rds
+ebb4adedccfdacf87cd6289da504f12a *README.md
+1aaf0827b60a41f4d411074bafc94aa6 *build/vignette.rds
 63c286998e47dac272fda8b6beddf6b2 *data/allCategory.rda
 70cc4121d2402db660eab0f6b28262ea *data/allCommodity.rda
 7740718bc7f8a56100a8c8f11799e65f *data/allCounty.rda
@@ -28,10 +28,11 @@ e38e0c9e62cf40c1b1c9a217d3483b4e *data/allGroup.rda
 6563a548ff3fed98a6310293df1167cc *data/allProgram.rda
 0f9dcebcc1b0ec440120bae36619c9c0 *data/allSector.rda
 296dbf3f16b353da8527a350a8320e8d *data/allState.rda
+c396db115d8b62be9deea71cdeea98db *inst/CITATION
 7dca4c3035d4932d23e7718f8aa51ae9 *inst/WORDLIST
 935b8e1ae54cc3490dc0e6fe91e66f09 *inst/doc/using_tidyusda.R
-362ae88c6f993f55e9a2a9cf8f534e09 *inst/doc/using_tidyusda.Rmd
-bd55cdac6b58b574f9619d49623aafd3 *inst/doc/using_tidyusda.html
+378415edcab5c32d83739364b6674477 *inst/doc/using_tidyusda.Rmd
+10a79cc5c6a2195afbd0dd522dc6c3db *inst/doc/using_tidyusda.html
 2eacf44ac6cfc706d4aa0ae5cb92fb0b *man/allCategory.Rd
 a76f3c3e38797ea3c1eac8f1692b1975 *man/allCommodity.Rd
 9dc0411552315637cb483d68d6d070f3 *man/allCounty.Rd
@@ -47,4 +48,4 @@ f3621d33513ae299277a6a70f598d94b *man/allProgram.Rd
 8899ac524330c386e52b7e43e5a57dd3 *man/plotUSDA.Rd
 a60b146db67ab43c7691646d79798079 *man/reexports.Rd
 4ec6054502247f7cf4a1542ff4e69043 *man/tidyUSDA.Rd
-362ae88c6f993f55e9a2a9cf8f534e09 *vignettes/using_tidyusda.Rmd
+378415edcab5c32d83739364b6674477 *vignettes/using_tidyusda.Rmd
