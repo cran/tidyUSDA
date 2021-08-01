@@ -14,22 +14,7 @@
 
 <title>Using tidyUSDA</title>
 
-<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
-// v0.0.1
-// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
-
-document.addEventListener('DOMContentLoaded', function() {
-  const codeList = document.getElementsByClassName("sourceCode");
-  for (var i = 0; i < codeList.length; i++) {
-    var linkList = codeList[i].getElementsByTagName('a');
-    for (var j = 0; j < linkList.length; j++) {
-      if (linkList[j].innerHTML === "") {
-        linkList[j].setAttribute('aria-hidden', 'true');
-      }
-    }
-  }
-});
-</script>
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -38,87 +23,31 @@ document.addEventListener('DOMContentLoaded', function() {
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      code.sourceCode > span { display: inline-block; line-height: 1.25; }
-  code.sourceCode > span { color: inherit; text-decoration: inherit; }
-  code.sourceCode > span:empty { height: 1.2em; }
-  .sourceCode { overflow: visible; }
-  code.sourceCode { white-space: pre; position: relative; }
-  div.sourceCode { margin: 1em 0; }
-  pre.sourceCode { margin: 0; }
-  @media screen {
-  div.sourceCode { overflow: auto; }
-  }
-  @media print {
-  code.sourceCode { white-space: pre-wrap; }
-  code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-  }
-  pre.numberSource code
-    { counter-reset: source-line 0; }
-  pre.numberSource code > span
-    { position: relative; left: -4em; counter-increment: source-line; }
-  pre.numberSource code > span > a:first-child::before
-    { content: counter(source-line);
-      position: relative; left: -1em; text-align: right; vertical-align: baseline;
-      border: none; display: inline-block;
-      -webkit-touch-callout: none; -webkit-user-select: none;
-      -khtml-user-select: none; -moz-user-select: none;
-      -ms-user-select: none; user-select: none;
-      padding: 0 4px; width: 4em;
-      color: #aaaaaa;
-    }
-  pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-  div.sourceCode
-    {   }
-  @media screen {
-  code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-  }
-  code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-  code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-  code span.at { color: #7d9029; } /* Attribute */
-  code span.bn { color: #40a070; } /* BaseN */
-  code span.bu { } /* BuiltIn */
-  code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-  code span.ch { color: #4070a0; } /* Char */
-  code span.cn { color: #880000; } /* Constant */
-  code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-  code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-  code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-  code span.dt { color: #902000; } /* DataType */
-  code span.dv { color: #40a070; } /* DecVal */
-  code span.er { color: #ff0000; font-weight: bold; } /* Error */
-  code span.ex { } /* Extension */
-  code span.fl { color: #40a070; } /* Float */
-  code span.fu { color: #06287e; } /* Function */
-  code span.im { } /* Import */
-  code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-  code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-  code span.op { color: #666666; } /* Operator */
-  code span.ot { color: #007020; } /* Other */
-  code span.pp { color: #bc7a00; } /* Preprocessor */
-  code span.sc { color: #4070a0; } /* SpecialChar */
-  code span.ss { color: #bb6688; } /* SpecialString */
-  code span.st { color: #4070a0; } /* String */
-  code span.va { color: #19177c; } /* Variable */
-  code span.vs { color: #4070a0; } /* VerbatimString */
-  code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
     </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,7 +67,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -195,187 +124,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type="text/css">body {
-background-color: #fff;
-margin: 1em auto;
-max-width: 700px;
-overflow: visible;
-padding-left: 2em;
-padding-right: 2em;
-font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 14px;
-line-height: 1.35;
-}
-#TOC {
-clear: both;
-margin: 0 0 10px 10px;
-padding: 4px;
-width: 400px;
-border: 1px solid #CCCCCC;
-border-radius: 5px;
-background-color: #f6f6f6;
-font-size: 13px;
-line-height: 1.3;
-}
-#TOC .toctitle {
-font-weight: bold;
-font-size: 15px;
-margin-left: 5px;
-}
-#TOC ul {
-padding-left: 40px;
-margin-left: -1.5em;
-margin-top: 5px;
-margin-bottom: 5px;
-}
-#TOC ul ul {
-margin-left: -2em;
-}
-#TOC li {
-line-height: 16px;
-}
-table {
-margin: 1em auto;
-border-width: 1px;
-border-color: #DDDDDD;
-border-style: outset;
-border-collapse: collapse;
-}
-table th {
-border-width: 2px;
-padding: 5px;
-border-style: inset;
-}
-table td {
-border-width: 1px;
-border-style: inset;
-line-height: 18px;
-padding: 5px 5px;
-}
-table, table th, table td {
-border-left-style: none;
-border-right-style: none;
-}
-table thead, table tr.even {
-background-color: #f7f7f7;
-}
-p {
-margin: 0.5em 0;
-}
-blockquote {
-background-color: #f6f6f6;
-padding: 0.25em 0.75em;
-}
-hr {
-border-style: solid;
-border: none;
-border-top: 1px solid #777;
-margin: 28px 0;
-}
-dl {
-margin-left: 0;
-}
-dl dd {
-margin-bottom: 13px;
-margin-left: 13px;
-}
-dl dt {
-font-weight: bold;
-}
-ul {
-margin-top: 0;
-}
-ul li {
-list-style: circle outside;
-}
-ul ul {
-margin-bottom: 0;
-}
-pre, code {
-background-color: #f7f7f7;
-border-radius: 3px;
-color: #333;
-white-space: pre-wrap; 
-}
-pre {
-border-radius: 3px;
-margin: 5px 0px 10px 0px;
-padding: 10px;
-}
-pre:not([class]) {
-background-color: #f7f7f7;
-}
-code {
-font-family: Consolas, Monaco, 'Courier New', monospace;
-font-size: 85%;
-}
-p > code, li > code {
-padding: 2px 0px;
-}
-div.figure {
-text-align: center;
-}
-img {
-background-color: #FFFFFF;
-padding: 2px;
-border: 1px solid #DDDDDD;
-border-radius: 3px;
-border: 1px solid #CCCCCC;
-margin: 0 5px;
-}
-h1 {
-margin-top: 0;
-font-size: 35px;
-line-height: 40px;
-}
-h2 {
-border-bottom: 4px solid #f7f7f7;
-padding-top: 10px;
-padding-bottom: 2px;
-font-size: 145%;
-}
-h3 {
-border-bottom: 2px solid #f7f7f7;
-padding-top: 10px;
-font-size: 120%;
-}
-h4 {
-border-bottom: 1px solid #f7f7f7;
-margin-left: 8px;
-font-size: 105%;
-}
-h5, h6 {
-border-bottom: 1px solid #ccc;
-font-size: 105%;
-}
-a {
-color: #0033dd;
-text-decoration: none;
-}
-a:hover {
-color: #6666ff; }
-a:visited {
-color: #800080; }
-a:visited:hover {
-color: #BB00BB; }
-a[href^="http:"] {
-text-decoration: underline; }
-a[href^="https:"] {
-text-decoration: underline; }
 
-code > span.kw { color: #555; font-weight: bold; } 
-code > span.dt { color: #902000; } 
-code > span.dv { color: #40a070; } 
-code > span.bn { color: #d14; } 
-code > span.fl { color: #d14; } 
-code > span.ch { color: #d14; } 
-code > span.st { color: #d14; } 
-code > span.co { color: #888888; font-style: italic; } 
-code > span.ot { color: #007020; } 
-code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; } 
-code > span.er { color: #a61717; background-color: #e3d2d2; } 
-</style>
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
 
 
 
@@ -403,62 +153,414 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>Quick start</h2>
 <p>First, install tidyUSDA with the instructions in the <a href="https://github.com/bradlindblad/tidyUSDA#Installation">README section</a>. Note that you may have to upgrade your R version if you are on an older build.</p>
 <p>Next, call tidyUSDA to make sure everything is installed correctly.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(tidyUSDA)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyUSDA)</span></code></pre></div>
 <p>The USDA controls access to their data with API keys. You can quickly obtain your free API key by following the brief instructions at the USDA quickstats website.</p>
 <p>Let’s pull some data now.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Use keyring to store your api key</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co"># key &lt;- keyring::key_get(&quot;tidyusda&quot;)</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Or hard code that thing</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>key &lt;-<span class="st"> &#39;7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71&#39;</span>  <span class="co"># please get your own key!</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use keyring to store your api key</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># key &lt;- keyring::key_get(&quot;tidyusda&quot;)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or hard code that thing</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>key <span class="ot">&lt;-</span> <span class="st">&#39;7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71&#39;</span>  <span class="co"># please get your own key!</span></span></code></pre></div>
 <p>At this point, it’s best to use the actual Quick Stats website to pick out the parameters you would like to filter by. This way you know for sure that data will be returned. I want to see a state-level breakdown of counts of operations using the 2017 census data.</p>
 <p>At this point it helps to see which possible values you <strong>can</strong> input into the function parameters. You can view these possible inputs for all of the parameters with the built-in datasets. Let’s check a few out.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>tidyUSDA<span class="op">::</span>allCategory <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt;             statisticcat_desc1             statisticcat_desc2 </span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;                &quot;ACCESSIBILITY&quot;    &quot;ACCESSIBILITY, 5 YEAR AVG&quot; </span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;             statisticcat_desc3             statisticcat_desc4 </span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; &quot;ACCESSIBILITY, PREVIOUS YEAR&quot;                  &quot;ACTIVE GINS&quot; </span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;             statisticcat_desc5             statisticcat_desc6 </span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;                     &quot;ACTIVITY&quot;         &quot;ACTIVITY, 5 YEAR AVG&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span>allCategory <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             statisticcat_desc1             statisticcat_desc2 </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                &quot;ACCESSIBILITY&quot;    &quot;ACCESSIBILITY, 5 YEAR AVG&quot; </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             statisticcat_desc3             statisticcat_desc4 </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &quot;ACCESSIBILITY, PREVIOUS YEAR&quot;                  &quot;ACTIVE GINS&quot; </span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             statisticcat_desc5             statisticcat_desc6 </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     &quot;ACTIVITY&quot;         &quot;ACTIVITY, 5 YEAR AVG&quot;</span></span></code></pre></div>
 <p>So it looks like there are only six possible input values for the <em>category</em> field. Good to know.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>tidyUSDA<span class="op">::</span>allGeogLevel <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt;               agg_level_desc1               agg_level_desc2 </span></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;       &quot;AGRICULTURAL DISTRICT&quot; &quot;AMERICAN INDIAN RESERVATION&quot; </span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;               agg_level_desc3               agg_level_desc4 </span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;                      &quot;COUNTY&quot;               &quot;INTERNATIONAL&quot; </span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;               agg_level_desc5               agg_level_desc6 </span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;                    &quot;NATIONAL&quot;        &quot;REGION : MULTI-STATE&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span>allGeogLevel <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               agg_level_desc1               agg_level_desc2 </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &quot;AGRICULTURAL DISTRICT&quot; &quot;AMERICAN INDIAN RESERVATION&quot; </span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               agg_level_desc3               agg_level_desc4 </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      &quot;COUNTY&quot;               &quot;INTERNATIONAL&quot; </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               agg_level_desc5               agg_level_desc6 </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    &quot;NATIONAL&quot;        &quot;REGION : MULTI-STATE&quot;</span></span></code></pre></div>
 <p>There are many different geography levels. Currently there is only support for providing geometries for <em>county</em> and <em>state</em> values.</p>
 <p>Now that we’re a little more clear on what we can input, let’s use our main function for data pulling.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Get count of operations with sales in 2017</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>ops.with.sales &lt;-<span class="st"> </span>tidyUSDA<span class="op">::</span><span class="kw">getQuickstat</span>(</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="dt">sector=</span><span class="ot">NULL</span>,</span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="dt">group=</span><span class="ot">NULL</span>,</span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="dt">commodity=</span><span class="ot">NULL</span>,</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  <span class="dt">category=</span><span class="ot">NULL</span>,</span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="dt">domain=</span><span class="st">&#39;TOTAL&#39;</span>,</span>
-<span id="cb5-8"><a href="#cb5-8"></a>  <span class="dt">county=</span><span class="ot">NULL</span>,</span>
-<span id="cb5-9"><a href="#cb5-9"></a>  <span class="dt">key =</span> key,</span>
-<span id="cb5-10"><a href="#cb5-10"></a>  <span class="dt">program =</span> <span class="st">&#39;CENSUS&#39;</span>,</span>
-<span id="cb5-11"><a href="#cb5-11"></a>  <span class="dt">data_item =</span> <span class="st">&#39;CROP TOTALS - OPERATIONS WITH SALES&#39;</span>,</span>
-<span id="cb5-12"><a href="#cb5-12"></a>  <span class="dt">geographic_level =</span> <span class="st">&#39;STATE&#39;</span>,</span>
-<span id="cb5-13"><a href="#cb5-13"></a>  <span class="dt">year =</span> <span class="st">&#39;2017&#39;</span>,</span>
-<span id="cb5-14"><a href="#cb5-14"></a>  <span class="dt">state =</span> <span class="ot">NULL</span>,</span>
-<span id="cb5-15"><a href="#cb5-15"></a>  <span class="dt">geometry =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb5-16"><a href="#cb5-16"></a>  <span class="dt">lower48 =</span> <span class="ot">TRUE</span>, </span>
-<span id="cb5-17"><a href="#cb5-17"></a>  <span class="dt">weighted_by_area =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get count of operations with sales in 2017</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ops.with.sales <span class="ot">&lt;-</span> tidyUSDA<span class="sc">::</span><span class="fu">getQuickstat</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sector=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">commodity=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">category=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">domain=</span><span class="st">&#39;TOTAL&#39;</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">county=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">key =</span> key,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">program =</span> <span class="st">&#39;CENSUS&#39;</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_item =</span> <span class="st">&#39;CROP TOTALS - OPERATIONS WITH SALES&#39;</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">geographic_level =</span> <span class="st">&#39;STATE&#39;</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="st">&#39;2017&#39;</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="cn">NULL</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">geometry =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower48 =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">weighted_by_area =</span> T)</span></code></pre></div>
 <p>Note that I set <em>geometry = TRUE</em> in order to include the geometry feature that we need for plotting, and that I set <em>lower48 = TRUE</em> in order to exclude Hawaii and Alaska.</p>
 <p>At this point, I have a dataframe with a rather verbose number of data fields. If you set <em>geometry = TRUE</em>, you will have even more columns. The main data point from Quick Stats will be in the ‘Value’ field. Feel free to filter the data frame for the fields you actually need at this point.</p>
 <p>Now let’s see what the data looks like with a basic choropleth map.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Plot this data for each state</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>tidyUSDA<span class="op">::</span><span class="kw">plotUSDA</span>(<span class="dt">df =</span> ops.with.sales)</span></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot this data for each state</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span><span class="fu">plotUSDA</span>(<span class="at">df =</span> ops.with.sales)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-103"><a href="#cb6-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-104"><a href="#cb6-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-105"><a href="#cb6-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-106"><a href="#cb6-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-107"><a href="#cb6-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-108"><a href="#cb6-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-109"><a href="#cb6-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-110"><a href="#cb6-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-111"><a href="#cb6-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-112"><a href="#cb6-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-113"><a href="#cb6-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-114"><a href="#cb6-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-115"><a href="#cb6-115" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-116"><a href="#cb6-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-117"><a href="#cb6-117" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-118"><a href="#cb6-118" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-119"><a href="#cb6-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-120"><a href="#cb6-120" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-121"><a href="#cb6-121" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-122"><a href="#cb6-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-123"><a href="#cb6-123" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-124"><a href="#cb6-124" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-125"><a href="#cb6-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-126"><a href="#cb6-126" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-127"><a href="#cb6-127" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-128"><a href="#cb6-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-129"><a href="#cb6-129" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-130"><a href="#cb6-130" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-131"><a href="#cb6-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-132"><a href="#cb6-132" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-133"><a href="#cb6-133" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-134"><a href="#cb6-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-135"><a href="#cb6-135" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-136"><a href="#cb6-136" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-137"><a href="#cb6-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-138"><a href="#cb6-138" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-139"><a href="#cb6-139" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-140"><a href="#cb6-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-141"><a href="#cb6-141" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-142"><a href="#cb6-142" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-143"><a href="#cb6-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-144"><a href="#cb6-144" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-145"><a href="#cb6-145" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-146"><a href="#cb6-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-147"><a href="#cb6-147" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-148"><a href="#cb6-148" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-149"><a href="#cb6-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-150"><a href="#cb6-150" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-151"><a href="#cb6-151" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-152"><a href="#cb6-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-153"><a href="#cb6-153" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-154"><a href="#cb6-154" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-155"><a href="#cb6-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-156"><a href="#cb6-156" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-157"><a href="#cb6-157" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-158"><a href="#cb6-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-159"><a href="#cb6-159" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-160"><a href="#cb6-160" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-161"><a href="#cb6-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-162"><a href="#cb6-162" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-163"><a href="#cb6-163" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-164"><a href="#cb6-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-165"><a href="#cb6-165" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-166"><a href="#cb6-166" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-167"><a href="#cb6-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-168"><a href="#cb6-168" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-169"><a href="#cb6-169" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-170"><a href="#cb6-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-171"><a href="#cb6-171" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-172"><a href="#cb6-172" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-173"><a href="#cb6-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-174"><a href="#cb6-174" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-175"><a href="#cb6-175" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb6-176"><a href="#cb6-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-177"><a href="#cb6-177" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb6-178"><a href="#cb6-178" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAA1BMVEX///+nxBvIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAaElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4NcARS8AAcJedcoAAAAASUVORK5CYII=" /><!-- --></p>
 <p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/mtennekes/tmap">tmap</a> package or <a href="https://rstudio.github.io/leaflet/">leaflet</a>.</em></p>
 <p>OK wow so it looks like all the farms in the country are in Texas But wait a second, Texass is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way.</p>
 <p>When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE, which creates a new field that,as you guessed, weights our main value by the land area in that county or state.</p>
 <p>This gives us a bunch of really small numbers that don’t make sense, but for our purposes of mapping, they’ll do.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>tidyUSDA<span class="op">::</span><span class="kw">plotUSDA</span>(<span class="dt">df =</span> ops.with.sales, <span class="dt">fill_by =</span> <span class="st">&#39;value_per_sq_mile&#39;</span>)</span></code></pre></div>
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAIAAACb4TnXAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAgAElEQVR4nO2deZRcxX3vf1V1995n3zTSLNoXZBCrwIBRAiRgEAkvEAfZENuJ4/g8Yww+TnJiHDsv9vHJSWwfL0kcO44Jfo7DCw7GBoddbEECS0KgZaQZzb50T+/dd696f/RoJM3a250Zifoc/aHpvre6bvf93qr61W9BjDHgcDjegJe7AxzOhQwXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIVxgHI6HcIFxOB7CBcbheAgXGIfjIcJyd4BTPs8880w8Hr/44ou7u7uXuy+cuUGMseXuA6dM7r///vGJCUkUv//972PMJyMrEa9GsMceeyyRSFSrNV3XY7HYqlWrAMBxnMHBwdWrV6+0WyqXyyWTydbW1uo2m0gkLMtqbGyc/VY6ndZlBQz9+PHjGzZsqO7ncqqCJwJjjL311lt9fX2UYteVCy8ixBCilGFgqNQGMXEIto8c6gMARBiR3BOH+xmdeRjCgEiJQ7KLzj4eCQDAgKLZjc8GIQBy5mQsMUTQ4bf7MXYZw1C4TnR2bxCjCGE29S5iANPvIkrnfl4Q4mDivNnbN+OyiOsygFhjc9vwwOHDh7u6ukRRLOKCOUuKV1PEb33rW6+88opuRFLptspb09TJYGAkdqgRANT6nK85m9wnu/mVNYIFL7JIAGIjVV4OyVo6VDs62rIqVls/5wHdPUdUQyeEbN68uamp6bLLLtu7dy8ANDQ0XH755S0tLdXtD6ckqjCCJZPJL3zhC+3t7VdeeeUll1wiyzIAiKLIGMlkmytvHwpjxYoHedPPQpPu/E33da4NpZKKoWdO9GqHDv3qV79yBNEWRcXQ/+M//uPuu+/eunVrY2OjoijV7xxnMaogsJ6enmg0Oj6efPPNN2VZXrdu3apVqwYHBxGiGLuUkso/gsF5YIlh3kwGGMMAgOb/BlwixGvqCoeG0ikAlvMHHUL8uWzrUP+jjz4KAK2trXfdddcll1ySTqeff/75+vr6q666anb/33rrrRdffHFgYOCyyy777d/+7VAo5MEFvbeowhTxF7/4xSOPPDIZX8sAy1JSknKiYDqulM/XGmZ1fiFNiwb9Yyt9irjNEsIQHaryFFFScuH6obGm1mj9HHaOhRFtu7P3uKGqvmyWuM6mTZsGBgay2SzGOBQKSZLk9/uvv/76ycnJSCTywgsv9Pb26rJmymowk1Al8brrrrvllltqa2ure0XvKaowgrW3twMAEUzDCDlOQy5feZMzOXt6xCgGAKmG6itMYB4NYZapMkZCyXgZArNF8dj6zQBAqNs6PPhWb6+uaJPdGyKJyRgAc2hoYPDk975XOFiXtfHWtWlfCACEura6xPgv/vuZ55577tprr7311lvr6+deAXIWpgoC27Rp04YNG44cOW5ZKqVS5Q3O5uwFiDGpag05rdN2cshOVGH+WTUQQsgDhTFs5v0qSkmOYwll/l4uJgOr1kz/qata4T9jTa2rBk8F08m+trUZNTj9RTuCOFbfFq1trkuMP/3c888///y11157++2319XVVXYx7znIww8/XGETCKGOjo4XXngOwDGtYDV6NRNR1GUplx/3Ff4004pan0cCWBMrSGByg4MVyGeqP6GirqD6U8BoNlDlRZHo2C0jgzk1MF7XOttEwxDOaYF4pNEFNHb03ef++1fRaHT16tWaplW3G8uL67p79+5ljEUikao3Xp19sPb29ksuueTVVw8BsHMndNWBwdlbRkAdDICkGldpcY3RcjbWvABh5MGlAwC4rgAAoutWpTXRsVcNnJIcywUkuA4wNtjcsdCnIzxe0xwLN9QlJ5556eVXXnll165dt912WzDoycN06XnkkUeefvppQshDDz30yiuvHD58+Oqrr77zzjsJ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" /><!-- --></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span><span class="fu">plotUSDA</span>(<span class="at">df =</span> ops.with.sales, <span class="at">fill_by =</span> <span class="st">&#39;value_per_sq_mile&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-117"><a href="#cb7-117" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-118"><a href="#cb7-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-119"><a href="#cb7-119" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-120"><a href="#cb7-120" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-121"><a href="#cb7-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-122"><a href="#cb7-122" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-123"><a href="#cb7-123" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-124"><a href="#cb7-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-125"><a href="#cb7-125" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-126"><a href="#cb7-126" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-127"><a href="#cb7-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-128"><a href="#cb7-128" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-129"><a href="#cb7-129" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-130"><a href="#cb7-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-131"><a href="#cb7-131" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-132"><a href="#cb7-132" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-133"><a href="#cb7-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-134"><a href="#cb7-134" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-135"><a href="#cb7-135" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-136"><a href="#cb7-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-137"><a href="#cb7-137" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-138"><a href="#cb7-138" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-139"><a href="#cb7-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-140"><a href="#cb7-140" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-141"><a href="#cb7-141" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-142"><a href="#cb7-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-143"><a href="#cb7-143" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-144"><a href="#cb7-144" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-145"><a href="#cb7-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-146"><a href="#cb7-146" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-147"><a href="#cb7-147" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-148"><a href="#cb7-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-149"><a href="#cb7-149" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-150"><a href="#cb7-150" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-151"><a href="#cb7-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-152"><a href="#cb7-152" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-153"><a href="#cb7-153" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-154"><a href="#cb7-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-155"><a href="#cb7-155" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-156"><a href="#cb7-156" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-157"><a href="#cb7-157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-158"><a href="#cb7-158" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-159"><a href="#cb7-159" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-160"><a href="#cb7-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-161"><a href="#cb7-161" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-162"><a href="#cb7-162" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-163"><a href="#cb7-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-164"><a href="#cb7-164" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-165"><a href="#cb7-165" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-166"><a href="#cb7-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-167"><a href="#cb7-167" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-168"><a href="#cb7-168" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-169"><a href="#cb7-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-170"><a href="#cb7-170" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-171"><a href="#cb7-171" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-172"><a href="#cb7-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-173"><a href="#cb7-173" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-174"><a href="#cb7-174" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span>
+<span id="cb7-175"><a href="#cb7-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-176"><a href="#cb7-176" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning in grid.Call.graphics(C_path, x$x, x$y, index, switch(x$rule, winding =</span></span>
+<span id="cb7-177"><a href="#cb7-177" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1L, : Path drawing not available for this device</span></span></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAA1BMVEX///+nxBvIAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAaElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4NcARS8AAcJedcoAAAAASUVORK5CYII=" /><!-- --></p>
 <p>Ahh, much better. Now we have a true plot showing the number of operations per square mile.</p>
 </div>
 <div id="taking-it-further" class="section level2">
