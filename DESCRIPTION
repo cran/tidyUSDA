@@ -2,7 +2,7 @@ Type: Package
 Package: tidyUSDA
 Title: A Minimal Tool Set for Gathering USDA Quick Stat Data for
         Analysis and Visualization
-Version: 0.3.2
+Version: 0.3.3
 Authors@R: 
     c(person(given = "Brad",
              family = "Lindblad",
@@ -33,10 +33,10 @@ Language: en-US
 LazyData: true
 RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2021-08-01 02:53:31 UTC; brad
+Packaged: 2022-01-23 16:12:00 UTC; brad
 Author: Brad Lindblad [aut, cre],
   Michael Thomas [ctb],
   Alex Mindeman [ctb]
 Maintainer: Brad Lindblad <me@bradlindblad.com>
 Repository: CRAN
-Date/Publication: 2021-08-01 04:10:01 UTC
+Date/Publication: 2022-01-23 16:30:02 UTC

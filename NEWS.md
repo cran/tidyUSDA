@@ -1,6 +1,7 @@
-# tidyUSDA 0.3.2
+# tidyUSDA 0.3.3
 
-# tidyUSDA
+# tidyUSDA 0.3.3
+* Fixed issue where vignette was not building correctly
 
 # tidyUSDA 0.3.2
 * Added error catch to https API calls
