@@ -20,7 +20,8 @@ tidyUSDA::allCategory %>% head()
 ## -----------------------------------------------------------------------------
 tidyUSDA::allGeogLevel %>% head()
 
-## ---- eval = FALSE------------------------------------------------------------
+## ---- results = "hide", eval=FALSE--------------------------------------------
+#  
 #  # Get count of operations with sales in 2017
 #  ops.with.sales <- tidyUSDA::getQuickstat(
 #    sector=NULL,
@@ -39,11 +40,12 @@ tidyUSDA::allGeogLevel %>% head()
 #    lower48 = TRUE,
 #    weighted_by_area = T)
 
-## ---- eval = FALSE------------------------------------------------------------
+## ---- eval=FALSE--------------------------------------------------------------
+#  
 #  # Plot this data for each state
 #  tidyUSDA::plotUSDA(df = ops.with.sales)
 #  
 
-## ---- eval = FALSE------------------------------------------------------------
+## ---- eval=FALSE--------------------------------------------------------------
 #  tidyUSDA::plotUSDA(df = ops.with.sales, fill_by = 'value_per_sq_mile')
 

@@ -14,7 +14,7 @@
 
 <title>Using tidyUSDA</title>
 
-<script src="using_tidyusda_files/header-attrs-2.9/header-attrs.js"></script>
+<script src="using_tidyusda_files/header-attrs-2.13/header-attrs.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -24,6 +24,7 @@
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
     </style>
+
 
 
 <style type="text/css">
@@ -143,26 +144,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="why-tidyusda" class="section level2">
 <h2>Why tidyUSDA?</h2>
-<p><em>Why do we need yet another “tidy” package? Why do I have to install so many geospatial dependencies?</em></p>
-<p>Valid questions. If you work with USDA data, you know that it is difficult at times to find what you need, when you need it. The sheer amount of data (the 2017 Census of Agriculture included some 6.4 million points of information [1]) should be a credit to the USDA, as that is a huge organizational task.</p>
-<p>Currently, the best way to pull data from previous Censuses of Agriculture and Agriculture Surveys is through the <a href="https://quickstats.nass.usda.gov/">Quick Stats web portal</a>, which allows you to apply filters in an interactive gui and then download CSV files. This works great for most applications, but R programmers hate having to pull data non-programmatically, which is where tidyUSDA comes in.</p>
-<p><strong><em>Programmatic data pulls directly from Quick Stats</em></strong> At its core, tidyUSDA is an API for the Quick Stats data, allowing you to pull that same data into a dataframe in your R session.</p>
-<p><strong><em>Geospatial capabilities</em></strong> tidyUSDA also gives you the option to automatically add a simple features column to the Quick Stats data, either at a county or national level. This allows you to quickly visualize Quick Stats data for fast iterations or report generation.</p>
+<p><em>Why do we need yet another “tidy” package? Why do I have to
+install so many geospatial dependencies?</em></p>
+<p>Valid questions. If you work with USDA data, you know that it is
+difficult at times to find what you need, when you need it. The sheer
+amount of data (the 2017 Census of Agriculture included some 6.4 million
+points of information [1]) should be a credit to the USDA, as that is a
+huge organizational task.</p>
+<p>Currently, the best way to pull data from previous Censuses of
+Agriculture and Agriculture Surveys is through the <a
+href="https://quickstats.nass.usda.gov/">Quick Stats web portal</a>,
+which allows you to apply filters in an interactive gui and then
+download CSV files. This works great for most applications, but R
+programmers hate having to pull data non-programmatically, which is
+where tidyUSDA comes in.</p>
+<p><strong><em>Programmatic data pulls directly from Quick
+Stats</em></strong> At its core, tidyUSDA is an API for the Quick Stats
+data, allowing you to pull that same data into a dataframe in your R
+session.</p>
+<p><strong><em>Geospatial capabilities</em></strong> tidyUSDA also gives
+you the option to automatically add a simple features column to the
+Quick Stats data, either at a county or national level. This allows you
+to quickly visualize Quick Stats data for fast iterations or report
+generation.</p>
 </div>
 <div id="quick-start" class="section level2">
 <h2>Quick start</h2>
-<p>First, install tidyUSDA with the instructions in the <a href="https://github.com/bradlindblad/tidyUSDA#Installation">README section</a>. Note that you may have to upgrade your R version if you are on an older build.</p>
-<p>Next, call tidyUSDA to make sure everything is installed correctly.</p>
+<p>First, install tidyUSDA with the instructions in the <a
+href="https://github.com/bradlindblad/tidyUSDA#Installation">README
+section</a>. Note that you may have to upgrade your R version if you are
+on an older build.</p>
+<p>Next, call tidyUSDA to make sure everything is installed
+correctly.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyUSDA)</span></code></pre></div>
-<p>The USDA controls access to their data with API keys. You can quickly obtain your free API key by following the brief instructions at the USDA quickstats website.</p>
+<p>The USDA controls access to their data with API keys. You can quickly
+obtain your free API key by following the brief instructions at the USDA
+quickstats website.</p>
 <p>Let’s pull some data now.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use keyring to store your api key</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># key &lt;- keyring::key_get(&quot;tidyusda&quot;)</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or hard code that thing</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>key <span class="ot">&lt;-</span> <span class="st">&#39;7CE0AFAD-EF7B-3761-8B8C-6AF474D6EF71&#39;</span>  <span class="co"># please get your own key!</span></span></code></pre></div>
-<p>At this point, it’s best to use the actual Quick Stats website to pick out the parameters you would like to filter by. This way you know for sure that data will be returned. I want to see a state-level breakdown of counts of operations using the 2017 census data.</p>
-<p>At this point it helps to see which possible values you <strong>can</strong> input into the function parameters. You can view these possible inputs for all of the parameters with the built-in datasets. Let’s check a few out.</p>
+<p>At this point, it’s best to use the actual Quick Stats website to
+pick out the parameters you would like to filter by. This way you know
+for sure that data will be returned. I want to see a state-level
+breakdown of counts of operations using the 2017 census data.</p>
+<p>At this point it helps to see which possible values you
+<strong>can</strong> input into the function parameters. You can view
+these possible inputs for all of the parameters with the built-in
+datasets. Let’s check a few out.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span>allCategory <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             statisticcat_desc1             statisticcat_desc2 </span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                &quot;ACCESSIBILITY&quot;    &quot;ACCESSIBILITY, 5 YEAR AVG&quot; </span></span>
@@ -170,7 +201,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &quot;ACCESSIBILITY, PREVIOUS YEAR&quot;                  &quot;ACTIVE GINS&quot; </span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             statisticcat_desc5             statisticcat_desc6 </span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     &quot;ACTIVITY&quot;         &quot;ACTIVITY, 5 YEAR AVG&quot;</span></span></code></pre></div>
-<p>So it looks like there are only six possible input values for the <em>category</em> field. Good to know.</p>
+<p>So it looks like there are only six possible input values for the
+<em>category</em> field. Good to know.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span>allGeogLevel <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               agg_level_desc1               agg_level_desc2 </span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       &quot;AGRICULTURAL DISTRICT&quot; &quot;AMERICAN INDIAN RESERVATION&quot; </span></span>
@@ -178,54 +210,87 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                      &quot;COUNTY&quot;               &quot;INTERNATIONAL&quot; </span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               agg_level_desc5               agg_level_desc6 </span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    &quot;NATIONAL&quot;        &quot;REGION : MULTI-STATE&quot;</span></span></code></pre></div>
-<p>There are many different geography levels. Currently there is only support for providing geometries for <em>county</em> and <em>state</em> values.</p>
-<p>Now that we’re a little more clear on what we can input, let’s use our main function for data pulling.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get count of operations with sales in 2017</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ops.with.sales <span class="ot">&lt;-</span> tidyUSDA<span class="sc">::</span><span class="fu">getQuickstat</span>(</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sector=</span><span class="cn">NULL</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">group=</span><span class="cn">NULL</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">commodity=</span><span class="cn">NULL</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">category=</span><span class="cn">NULL</span>,</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">domain=</span><span class="st">&#39;TOTAL&#39;</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">county=</span><span class="cn">NULL</span>,</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">key =</span> key,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">program =</span> <span class="st">&#39;CENSUS&#39;</span>,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_item =</span> <span class="st">&#39;CROP TOTALS - OPERATIONS WITH SALES&#39;</span>,</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">geographic_level =</span> <span class="st">&#39;STATE&#39;</span>,</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="st">&#39;2017&#39;</span>,</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="cn">NULL</span>,</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">geometry =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower48 =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">weighted_by_area =</span> T)</span></code></pre></div>
-<p>Note that I set <em>geometry = TRUE</em> in order to include the geometry feature that we need for plotting, and that I set <em>lower48 = TRUE</em> in order to exclude Hawaii and Alaska.</p>
-<p>At this point, I have a dataframe with a rather verbose number of data fields. If you set <em>geometry = TRUE</em>, you will have even more columns. The main data point from Quick Stats will be in the ‘Value’ field. Feel free to filter the data frame for the fields you actually need at this point.</p>
-<p>Now let’s see what the data looks like with a basic choropleth map.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot this data for each state</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span><span class="fu">plotUSDA</span>(<span class="at">df =</span> ops.with.sales)</span></code></pre></div>
-<p><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/vignette_1.png?raw=true" /></p>
-<p><em>Note: it is a known issue that the RStudio graphics device on macOS can be extremely laggy when plotting. To get around this, feel free to use your own plotting methods such as the <a href="https://github.com/r-tmap/tmap">tmap</a> package or <a href="https://rstudio.github.io/leaflet/">leaflet</a>.</em></p>
-<p>OK wow so it looks like all the farms in the country are in Texas But wait a second, Texass is huge as far as landmass, and the relative size of the farms are smaller on balance, so maybe we should look at this a different way.</p>
-<p>When we grabbed our data with getQuickstat above, we set weighted_by_area = TRUE, which creates a new field that,as you guessed, weights our main value by the land area in that county or state.</p>
-<p>This gives us a bunch of really small numbers that don’t make sense, but for our purposes of mapping, they’ll do.</p>
+<p>There are many different geography levels. Currently there is only
+support for providing geometries for <em>county</em> and <em>state</em>
+values.</p>
+<p>Now that we’re a little more clear on what we can input, let’s use
+our main function for data pulling.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Get count of operations with sales in 2017</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ops.with.sales <span class="ot">&lt;-</span> tidyUSDA<span class="sc">::</span><span class="fu">getQuickstat</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sector=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">group=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">commodity=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">category=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">domain=</span><span class="st">&#39;TOTAL&#39;</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">county=</span><span class="cn">NULL</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">key =</span> key,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">program =</span> <span class="st">&#39;CENSUS&#39;</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data_item =</span> <span class="st">&#39;CROP TOTALS - OPERATIONS WITH SALES&#39;</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">geographic_level =</span> <span class="st">&#39;STATE&#39;</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="st">&#39;2017&#39;</span>,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="cn">NULL</span>,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">geometry =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower48 =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">weighted_by_area =</span> T)</span></code></pre></div>
+<p>Note that I set <em>geometry = TRUE</em> in order to include the
+geometry feature that we need for plotting, and that I set <em>lower48 =
+TRUE</em> in order to exclude Hawaii and Alaska.</p>
+<p>At this point, I have a dataframe with a rather verbose number of
+data fields. If you set <em>geometry = TRUE</em>, you will have even
+more columns. The main data point from Quick Stats will be in the
+‘Value’ field. Feel free to filter the data frame for the fields you
+actually need at this point.</p>
+<p>Now let’s see what the data looks like with a basic choropleth
+map.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot this data for each state</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span><span class="fu">plotUSDA</span>(<span class="at">df =</span> ops.with.sales)</span></code></pre></div>
+<p><a href='https://bradlindblad.github.io/tidyUSDA/'><img src='images/vig_1.png' align="center" height="300" /></a></p>
+<p><em>Note: it is a known issue that the RStudio graphics device on
+macOS can be extremely laggy when plotting. To get around this, feel
+free to use your own plotting methods such as the <a
+href="https://github.com/r-tmap/tmap">tmap</a> package or <a
+href="https://rstudio.github.io/leaflet/">leaflet</a>.</em></p>
+<p>OK wow so it looks like all the farms in the country are in Texas But
+wait a second, Texas is huge as far as landmass, and the relative size
+of the farms are smaller on balance, so maybe we should look at this a
+different way.</p>
+<p>When we grabbed our data with getQuickstat above, we set
+weighted_by_area = TRUE, which creates a new field that,as you guessed,
+weights our main value by the land area in that county or state.</p>
+<p>This gives us a bunch of really small numbers that don’t make sense,
+but for our purposes of mapping, they’ll do.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tidyUSDA<span class="sc">::</span><span class="fu">plotUSDA</span>(<span class="at">df =</span> ops.with.sales, <span class="at">fill_by =</span> <span class="st">&#39;value_per_sq_mile&#39;</span>)</span></code></pre></div>
-<p><img src="https://github.com/bradlindblad/tidyUSDA/blob/master/images/vignette_2.png?raw=true" /></p>
-<p>Ahh, much better. Now we have a true plot showing the number of operations per square mile.</p>
+<p><a href='https://bradlindblad.github.io/tidyUSDA/'><img src='images/vig_2.png' align="center" height="300" /></a></p>
+<p>Ahh, much better. Now we have a true plot showing the number of
+operations per square mile.</p>
 </div>
 <div id="taking-it-further" class="section level2">
 <h2>Taking it further</h2>
-<p>This package was designed for data analysts and scientists, meaning that the output of getQuickstat is particularly verbose, rather than cherry-picked, giving the user extra data that may be useful. If you do intend to plot the data that you pull down with <em>getQuickstat</em>, don’t feel like you need to use <em>plotUSDA</em> to visualize the results; you can use any method you’d like to plot the simple features geometry.</p>
+<p>This package was designed for data analysts and scientists, meaning
+that the output of getQuickstat is particularly verbose, rather than
+cherry-picked, giving the user extra data that may be useful. If you do
+intend to plot the data that you pull down with <em>getQuickstat</em>,
+don’t feel like you need to use <em>plotUSDA</em> to visualize the
+results; you can use any method you’d like to plot the simple features
+geometry.</p>
 </div>
 <div id="how-you-can-contribute" class="section level2">
 <h2>How you can contribute</h2>
-<p>You can report a bug or request new features at <a href="https://github.com/bradlindblad/tidyUSDA/issues">https://github.com/bradlindblad/tidyUSDA/issues</a>.</p>
+<p>You can report a bug or request new features at <a
+href="https://github.com/bradlindblad/tidyUSDA/issues">https://github.com/bradlindblad/tidyUSDA/issues</a>.</p>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
-<p>[1] (<a href="https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available" class="uri">https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available</a>)</p>
+<p>[1] (<a
+href="https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available"
+class="uri">https://www.usda.gov/media/press-releases/2019/04/11/2017-census-agriculture-data-now-available</a>)</p>
 </div>
 <div id="important-note" class="section level2">
 <h2>Important note</h2>
-<p>This product uses the NASS API but is not endorsed or certified by NASS.</p>
+<p>This product uses the NASS API but is not endorsed or certified by
+NASS.</p>
 </div>
 
 
